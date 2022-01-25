@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+	<link rel="stylesheet" href="../Styles/game_style.css">
+	<link rel="stylesheet" href="https://use.typekit.net/gdu4kgx.css">
+
+	<title>Jeopardy!</title>
+</head>
+
+<body>
+	<embed src="../Media/bgmusic.mp3" loop="true" autostart="true" width="2" height="0">
+	<div class="container-fluid">
+		<center>
+			<table class="top-table">
+				<td class="top-title">
+					<div class="title">
+						<h1 class="title">JEOPARDY!</h1>
+					</div>
+				</td>
+				<td class="top-turn">
+					<h2 class="team-order" id="teamTurn"></h2>
+				</td>
+				<td class="top-scoreboard">
+					<div class="text-center" id="scoreboard">
+						<center>
+							<table class="styled-table">
+								<thead>
+									<tr id="scoreboard-header">
+										<th>Team 1</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr id="scoreboard-data">
+										<td class="s-table-text" id="t1">$0</td>
+									</tr>
+								</tbody>
+							</table>
+						</center>
+					</div>
+				</td>
+			</table>
+		</center>
+	</div>
+	<div class="row" id="gameBoard"></div>
+
+	<div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModalLabel" aria-hidden="true"
+	 data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title text-center" id="questionModalLabel">Question</h2>
+					<button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p class="card-text"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" id="reveal">Reveal Answer</button>
+					<button type="button" class="btn btn-danger" id="incorrect" data-dismiss="modal">Incorrect</button>
+					<button type="button" class="btn btn-primary" id="correct">Correct</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+    <script src="../Scripts/gamescript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

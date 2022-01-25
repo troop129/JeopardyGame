@@ -1,0 +1,28 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="Styles/index_style.css">
+</head>
+
+<body>
+	<script>
+		function sendPlayerCount(p) {
+    url = '/Pages/game.html?teams=' + encodeURIComponent(p);
+    document.location.href = url;
+    }
+	</script>
+	<div class="title">
+		<h1 class="titlei">JEOPARDY!</h1>
+	</div>
+	<div class="sec-center">
+		<input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+	  	<label class="for-dropdown" for="dropdown">Start Game <i class="uil uil-arrow-down"></i></label>
+  		<div class="section-dropdown"> 
+		  	<input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub"/>
+  			<a onClick="sendPlayerCount(2)" data-value="2" id="2pl">2 Players <i class="uil uil-arrow-right"></i></a>
+  			<a onClick="sendPlayerCount(3)" data-value="3" id="3pl">3 Players <i class="uil uil-arrow-right"></i></a>
+        <a onClick="sendPlayerCount(4)" data-value="4" id="4pl">4 Players <i class="uil uil-arrow-right"></i></a>
+  		</div>
+</div>
+</body>
+</html>

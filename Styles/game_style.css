@@ -1,0 +1,138 @@
+.container-fluid {
+    margin-top: 16px;
+    
+}
+.list-group, .list-group-flush, .card, .card-header {
+    border: none;
+    
+}
+.card-header {
+    padding: 30px 0px;
+    background-color: blue;
+    border: 1px solid white;
+    border-radius: 50px;
+    margin: 5px;
+    color: rgb(255, 255, 255);
+    font-family: museo-sans, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+.list-group-item{
+    padding: 5px 0px;
+    background-color: blue;
+    border: 1px solid white;
+    border-radius: 50px;
+    margin: 5px;
+    color: rgb(255, 204, 0);
+    font-family: novecento-sans, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.list-group-item:hover{
+    background-color: rgba(0, 0, 255, 0.87);
+}
+a:hover {
+    text-decoration: none;
+}
+.list-group-item {
+    font-size: 4rem;
+}
+.list-group-item.disabled {
+    background-color: black;
+    color: black;
+}
+.isDisabled {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+.team-order{
+  text-align: center;
+  color: white;
+  font-size: 5rem;
+}
+.title {
+    text-align: center;
+    font-family: 'gyparodyregular';
+    color: white;
+    font-size: 4pc;
+}
+.card-text{
+    font-family: itc-benguiat, serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:24pt;
+}
+h2{
+    font-family: novecento-sans, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+p {
+    font-size: 4rem;
+}
+.styled-table {
+    border-collapse: collapse;
+    margin: 5px 0;
+    font-size: 1.5em;
+    text-align: center;
+    font-family: novecento-sans, sans-serif;
+    min-width: 50px;
+    color: white;
+    box-shadow: 0 0 20px rgba(247, 247, 247, 0.3);
+}
+.styled-table thead tr {
+    background-color: blue;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid blue;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: blue;
+}
+.s-table-text-active{
+  color: rgb(255, 204, 0);
+}
+.top-table{
+    width: 100%;
+}
+.card{
+  background-color: black;
+  margin: 10px;
+}
+#gameBoard{
+  background-color: black;
+}
+.card-header{
+  border-color: black;
+}
+.top-title{
+  text-align: right;  
+}
+.top-scoreboard{
+  text-align: left;
+}
+@font-face {
+    font-family: 'gyparodyregular';
+    src: url('Fonts/gyparody-webfont.woff2') format('woff2'),
+         url('Fonts/gyparody-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+  background: black;
+}
