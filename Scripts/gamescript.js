@@ -52,11 +52,11 @@ function setupBoard() {
       link.setAttribute('data-toggle', 'modal');
       link.setAttribute('data-target', '#questionModal');
       link.setAttribute('data-category', i.toString())
-      link.setAttribute('data-money', ((j + 1) * 100).toString());
+      link.setAttribute('data-money', ((j + 1) * 200).toString());
       link.setAttribute('data-questionid', j.toString());
       var listItem = document.createElement('li');
       listItem.className = 'list-group-item';
-      var amount = document.createTextNode('$' + (j + 1) * 100);
+      var amount = document.createTextNode('$' + (j + 1) * 200);
       listItem.appendChild(amount);
 
       list.append(link);
