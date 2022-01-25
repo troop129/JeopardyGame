@@ -101,7 +101,7 @@ function reduceQuestions() {
 }
 
 function checkForWinner() {
-  if (questionsLeft == 27) {
+  if (questionsLeft == 0) {
     var url = "result.html?teams=" + encodeURIComponent(numTeams);
     for(i=0; i<numTeams; i++){
       url += "&team"+(i+1)+"="+ encodeURIComponent(teams[i][1]);
