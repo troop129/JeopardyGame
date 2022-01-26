@@ -25,11 +25,18 @@ for (i = 1; i <= numTeams; i++) {
   teams[i] = ['Team ' + i, 0];
 }
 teams = teams.filter(function () { return true });
-console.log(teams);
+//console.log(teams);
 var currentTeam = 0;
 var previousTeam = 0;
 var questionsLeft = categories.length * questions[0].length;
 var isAnsReveal = false;
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+dd = getRandomInt(27, 30);
 
 function setupBoard() {
   for (var i = 0; i < categories.length; i++) {
@@ -97,7 +104,7 @@ function incrementTeam() {
 
 function reduceQuestions() {
   questionsLeft--;
-  console.log(questionsLeft);
+  //console.log(questionsLeft);
 }
 
 function checkForWinner() {
@@ -115,7 +122,7 @@ function whosTurnIsIt() {
 }
 
 function updateScoreboard() {
-  console.log(currentTeam);
+  //console.log(currentTeam);
   $('#t' + (currentTeam + 1)).empty();
   d = '$' + teams[currentTeam][1];
   $('#t' + (currentTeam + 1)).append(d);
@@ -157,8 +164,6 @@ $(document).ready(function () {
     category = link.data('category');
     money = link.data('money');
     questionid = link.data('questionid');
-
-
     var modal = $(this);
     modal.find('.modal-title').text(categories[category] + ' for $' + money);
     modal.find('.modal-body p').text(questions[category][questionid]);
@@ -203,6 +208,6 @@ $(document).ready(function () {
   });
 
   $('#close').click(function () {
-    console.log('hello');
+    //console.log('hello');
   })
 });

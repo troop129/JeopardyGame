@@ -2,12 +2,46 @@
 
 <head>
 	<link rel="stylesheet" href="../Styles/result_style.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="../Media/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../Media/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../Media/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../Media/favicon/site.webmanifest">
+	<link rel="stylesheet" href="https://use.typekit.net/gdu4kgx.css">
 </head>
 
-<body>
-	<script src="../Scripts/result.js">
+<body id="bod">
+	<canvas id="my-canvas"></canvas>
+
+
+	<script>
+		function turnOff(){
+      document.getElementById('btn1').style.visibility = "hidden";
+      document.getElementById('bod').style.background = 'black';
+      document.getElementById('btn1').style.cursor = "none";
+    }
+
+    function goHome(){
+      document.location.href = "../index.html"
+    }
 	</script>
-	<h1 id="i">welcome you won</h1>
+	<title>Jeopardy! - Game Over</title>
+	<h1 class="title">Game Over!</h1>
+	<h1 class="subtitle">Thanks for playing!</h1>
+
+	<h3 class="winner-setup">The winner is:</h3>
+	<h2 class="winner" id="winner-team">..</h2>
+	<h3 class="winner-setup">With a score of:</h3>
+	<h2 class="winner" id="winner-score">..</h2>
+
+	<h3 class="others">Congrats to our other players:</h3>
+
+	<script src="../Scripts/result.js">
+
+	</script>
+
+	<button id = "btn1" class="turn-off" onclick="turnOff()">turn off confetti</button>
+
+  <center><button href="../index.html" class="button" onclick="goHome()">Home</button></center>
 </body>
 
 </html>

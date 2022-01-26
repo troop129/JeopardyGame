@@ -2,9 +2,15 @@
 
 <head>
 	<link rel="stylesheet" href="Styles/index_style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="Media/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Media/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Media/favicon/favicon-16x16.png">
+  <link rel="manifest" href="Media/favicon/site.webmanifest">
+	<link rel="stylesheet" href="https://use.typekit.net/gdu4kgx.css">
 </head>
 
 <body>
+  <title>Jeopardy! - Home</title>
 	<script>
 		function sendPlayerCount(p) {
     url = '/Pages/game.html?teams=' + encodeURIComponent(p);
@@ -22,6 +28,7 @@
   			<a onClick="sendPlayerCount(2)" data-value="2" id="2pl">2 Players <i class="uil uil-arrow-right"></i></a>
   			<a onClick="sendPlayerCount(3)" data-value="3" id="3pl">3 Players <i class="uil uil-arrow-right"></i></a>
         <a onClick="sendPlayerCount(4)" data-value="4" id="4pl">4 Players <i class="uil uil-arrow-right"></i></a>
+        <a onClick="sendPlayerCount(5)" data-value="5" id="4pl">5 Players <i class="uil uil-arrow-right"></i></a>
   		</div>
 </div>
 </body>
