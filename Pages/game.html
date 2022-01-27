@@ -9,16 +9,18 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 	<link rel="stylesheet" href="../Styles/game_style.css">
 	<link rel="stylesheet" href="https://use.typekit.net/gdu4kgx.css">
-  <link rel="apple-touch-icon" sizes="180x180" href="../Media/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../Media/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../Media/favicon/favicon-16x16.png">
-  <link rel="manifest" href="../Media/favicon/site.webmanifest">
+	<link rel="apple-touch-icon" sizes="180x180" href="../Media/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../Media/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../Media/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../Media/favicon/site.webmanifest">
 	<title>Jeopardy!</title>
 </head>
 
 <body>
-  <title>Jeopardy! - Game</title>
-	<embed src="../Media/bgmusic.mp3" loop="true" autostart="true" width="2" height="0">
+	<title>Jeopardy! - Game</title>
+  <audio autoplay loop id="background_audio">
+    <source src="../Media/jtheme.mp3" type="audio/mpeg">
+  </audio>
 	<div class="container-fluid">
 		<center>
 			<table class="top-table">
@@ -67,14 +69,17 @@
 					<p class="card-text"></p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-success" id="reveal">Reveal Answer</button>
-					<button type="button" class="btn btn-danger" id="incorrect" data-dismiss="modal">Incorrect</button>
-					<button type="button" class="btn btn-primary" id="correct">Correct</button>
+					<button type="button" class="btn btn-primary" id="reveal">Reveal Answer (space)</button>
+					<button type="button" class="btn btn-danger" id="incorrect" data-dismiss="modal">Incorrect (z)</button>
+					<button type="button" class="btn btn-success" id="correct">Correct (c)</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
+  <br>
+  <center><button id="audioControl">Mute Music</button></center>
+  
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
     <script src="../Scripts/gamescript.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>

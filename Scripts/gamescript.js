@@ -30,6 +30,8 @@ var currentTeam = 0;
 var previousTeam = 0;
 var questionsLeft = categories.length * questions[0].length;
 var isAnsReveal = false;
+var isPlaying = true;
+var isHint = true;
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -133,6 +135,10 @@ function updateActiveTeam() {
   document.getElementById("t"+(previousTeam+1)).classList.remove('s-table-text-active');
 }
 
+function controlAudio(b){
+  document.getElementById('background_audio').muted = b;
+}
+
 function nextQuestion() {
   $('#questionModal').modal('hide');
   isAnsReveal = false;
@@ -141,6 +147,15 @@ function nextQuestion() {
   whosTurnIsIt();
   updateActiveTeam();
   checkForWinner();
+}
+
+function hintCheck(){
+  if (questionsLeft == (parseInt(categories.length*questions[0].length)-5)){
+    document.getElementById("reveal").innerHTML = "Reveal Answer";
+    document.getElementById("incorrect").innerHTML = "Incorrect";
+    document.getElementById("correct").innerHTML = "Correct";
+    isHint = false;
+  }
 }
 
 $(document).ready(function () {
@@ -157,6 +172,7 @@ $(document).ready(function () {
     $(this).addClass('isDisabled');
     $(this).children().addClass('disabled');
     reduceQuestions();
+    hintCheck();
   });
 
   $('#questionModal').on('shown.bs.modal', function (event) {
@@ -188,13 +204,21 @@ $(document).ready(function () {
     var modal = $(this);
     if (isAnsReveal == false) {
       $('#questionModal').find('.modal-body p').text(answers[category][questionid]);
-      document.getElementById("reveal").innerHTML = "Reveal Question";
+      if (isHint){
+        document.getElementById("reveal").innerHTML = "Reveal Question (space)";
+      }else{
+        document.getElementById("reveal").innerHTML = "Reveal Question";
+      }
       isAnsReveal = true;
       return;
     }
     $('#questionModal').find('.modal-body p').text(questions[category][questionid]);
     isAnsReveal = false;
-    document.getElementById("reveal").innerHTML = "Reveal Answer";
+    if (isHint){
+      document.getElementById("reveal").innerHTML = "Reveal Answer (space)";
+    }else{
+      document.getElementById("reveal").innerHTML = "Reveal Answer";
+    }
   });
 
   $('#correct').click(function () {
@@ -211,3 +235,13 @@ $(document).ready(function () {
     //console.log('hello');
   })
 });
+
+$('#audioControl').click(function () {
+    if (!isPlaying){
+      document.getElementById("audioControl").innerHTML = "Unmute Music";
+    }else{
+      document.getElementById("audioControl").innerHTML = "Mute Music";
+    }
+    isPlaying = !isPlaying;
+    controlAudio(isPlaying);
+  })

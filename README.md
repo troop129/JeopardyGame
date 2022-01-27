@@ -11,5 +11,7 @@ This is a dynamic implementation of the game, where the number of players can be
 
 The dropdown menu on the `index.html` page is from this [codepen](https://codepen.io/ig_design/pen/MWKVrNR). Thanks to [Ivan Grozdic](https://codepen.io/ig_design) for his excellent implementation.
 
+Jeopardy theme song from [Orange Free Sounds](https://orangefreesounds.com/jeopardy-theme-song/).
+
 You can see this project in action on a hosted [repl](https://jeopardygame.troop129.repl.co/).
 

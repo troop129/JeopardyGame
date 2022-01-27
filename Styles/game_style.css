@@ -113,6 +113,17 @@ p {
   background-color: black;
   margin: 10px;
 }
+.btn-primary{
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+.btn-primary:hover{
+  background-color: rgb(216, 216, 216);
+  color: black;
+}
+.btn{
+  font-family: novecento-sans, sans-serif;
+}
 #gameBoard{
   background-color: black;
 }
@@ -146,22 +157,60 @@ body{
 }
 
 #reveal{
-  visibility: hidden;
+  visibility: show;
 }
 #correct{
-  visibility: hidden;
+  visibility: show;
 }
 #incorrect{
-  visibility: hidden;
+  visibility: show;
 }
 .modal-footer{
-  visibility: hidden;
+  visibility: show;
+  text-align: center;
 }
 .modal-body{
   text-align: center;
   
 }
+.hidden{
+  visibility: hidden;
+}
 .card-text{
-  margin-top: 2pc;
-  font-size: 50px;
+  margin-top: 0px;
+  font-size: 45px;
+}
+
+#tip{
+  font-size: 20px;
+  text-align: center;
+}
+.modal-tip{
+  border: 1px white;
+}
+
+#questionModalLabel{
+ text-align: center;
+
+}
+.modal-content{
+  text-align: center;
+}
+button {
+  background-color: rgb(255, 204, 0);
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: novecento-sans, sans-serif;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+div{
+  overflow: auto;
 }
