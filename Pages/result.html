@@ -9,39 +9,49 @@
 	<link rel="stylesheet" href="https://use.typekit.net/gdu4kgx.css">
 </head>
 
-<body id="bod">
-	<canvas id="my-canvas"></canvas>
-
-
+<body id="bod" class="confetti">
 	<script>
-		function turnOff(){
-      document.getElementById('btn1').style.visibility = "hidden";
-      document.getElementById('bod').style.background = 'black';
-      document.getElementById('btn1').style.cursor = "none";
+		var isConfetti = true;
+		function toggleConfetti(){
+      if (isConfetti){
+        document.getElementById('bod').classList.remove("confetti");
+        document.getElementById('btn1').innerHTML = "Turn on confetti";
+        isConfetti = false;
+      }else{
+        document.getElementById('bod').classList.add("confetti");
+        document.getElementById('btn1').innerHTML = "Turn off confetti";
+        isConfetti = true;
+      }
     }
 
     function goHome(){
       document.location.href = "../index.html"
     }
 	</script>
+
 	<title>Jeopardy! - Game Over</title>
-	<h1 class="title">Game Over!</h1>
-	<h1 class="subtitle">Thanks for playing!</h1>
+  <div id="page-containter">
+    <div id="content-wrap">
+      <h1 class="title">Game Over!</h1>
+      <h1 class="subtitle">Thanks for playing!</h1>
 
-	<h3 class="winner-setup">The winner is:</h3>
-	<h2 class="winner" id="winner-team">..</h2>
-	<h3 class="winner-setup">With a score of:</h3>
-	<h2 class="winner" id="winner-score">..</h2>
+      <h3 class="winner-setup">The winner is:</h3>
+      <h2 class="winner" id="winner-team">..</h2>
+      <h3 class="winner-setup">With a score of:</h3>
+      <h2 class="winner" id="winner-score">..</h2>
 
-	<h3 class="others">Congrats to our other players:</h3>
+      <h3 class="others">Congrats to our other players:</h3>
 
-	<script src="../Scripts/result.js">
+      <script src="../Scripts/result.js"></script>
 
-	</script>
+      <button id = "btn1" class="turn-off" onclick="toggleConfetti()">Turn off confetti</button>
 
-	<button id = "btn1" class="turn-off" onclick="turnOff()">turn off confetti</button>
-
-  <center><button href="../index.html" class="button" onclick="goHome()">Home</button></center>
+      <center><button href="../index.html" class="button" onclick="goHome()">Home</button></center>
+    </div>
+  </div>
+  <footer>
+      <p>Game by Abid Rasheed, Nitin Kanchi, Jhonathan Herman, Liam Taylor, and Connor Healy.</p>
+    </footer>
 </body> 
 
 </html>

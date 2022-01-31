@@ -60,6 +60,7 @@ button {
 
 button:hover {
   box-shadow: 0 12px 16px 0 rgba(255, 255, 255, 0.24),0 17px 30px 0 rgba(255, 255, 255, 0.19);
+  background-color: rgb(255, 215, 56);
 }
 a{
   text-decoration: none;
@@ -67,9 +68,36 @@ a{
 }
 body {
   background: black;
+  overflow-x: hidden;
+  text-align: center;
+}
+.confetti{
+  background: black;
   background-image: url('./images/confetti2.gif');
   text-align: center;
 }
 #btn1{
   color: black;
+}
+p{
+  font-family: novecento-sans, sans-serif;
+  text-align: center;
+  font-size: 0.7rem;
+  line-height: 1;
+  color: white;
+}
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+footer{
+  bottom: 0;
+  width:100%;
+  overflow: hidden;
+  position: relative;
+  height: 2.5rem;
 }

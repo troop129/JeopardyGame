@@ -1,10 +1,8 @@
 .container-fluid {
     margin-top: 16px;
-    
 }
 .list-group, .list-group-flush, .card, .card-header {
     border: none;
-    
 }
 .card-header {
     padding: 30px 0px;
@@ -156,15 +154,7 @@ body{
   height: 100%;
 }
 
-#reveal{
-  visibility: show;
-}
-#correct{
-  visibility: show;
-}
-#incorrect{
-  visibility: show;
-}
+
 .modal-footer{
   visibility: show;
   text-align: center;
@@ -196,7 +186,11 @@ body{
 .modal-content{
   text-align: center;
 }
-button {
+.modal-dd-text{
+  font-family: novecento-sans, sans-serif;
+  font-size: 20px;
+}
+.button-special{
   background-color: rgb(255, 204, 0);
   border: none;
   color: black;
@@ -210,6 +204,35 @@ button {
   cursor: pointer;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
+
+}
+.ddbtn{
+  padding: 5px 5px;
+  margin: 5px 5px;
+  background-color: rgb(255, 204, 0);
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: novecento-sans, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.button-special:hover {
+  box-shadow: 0 12px 16px 0 rgba(255, 255, 255, 0.24),0 17px 30px 0 rgba(255, 255, 255, 0.19);
+  background-color: rgb(255, 215, 56);
+}
+.bet-input{
+  border: none;
+  border-bottom: 5px solid rgb(255, 215, 56);
+  background: blue;
+  font-family: novecento-sans, sans-serif;
+  text-align: center;
+  color:white;
+  
 }
 div{
   overflow: auto;
