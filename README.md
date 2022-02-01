@@ -38,6 +38,7 @@ There are a couple of functions that when the page is loaded, including board ge
 ![clicking](https://i.imgur.com/FxBFUMU.gif)
 Inside the modal is the title, question, team selector, and the button panel.
 ![modal](https://i.imgur.com/VGlGWFd.png)
+
 The title updates with the category, and money based on location. The question takes the data from the array based on the position.
 ```js
 $('#questionModal').on('shown.bs.modal', function (event) {
