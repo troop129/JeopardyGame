@@ -1,16 +1,66 @@
 var categories = ['Unity', 'Chapter Questions', 'Adobe Animate', 'Visual Studio', 'Copyright'];
 var questions = [
-  ['This is the shortcut for the move tool.', 'This needs to be done before starting the lego micro-game.', 'This is the the shortcut for the scale tool.', 'This is where you interact with the game being built.', 'This is the button that allows you to change your camera orientation.', 'This is the the shortcut for the select tool.'],
-  ['This person creates the controls for the player.', 'This generation is when home video game systems became popular.', 'This person creates character depth and interaction.', "This perspective has you looking through the character's eyes.", 'This person creates the visual elements and assets of the game.', 'This is the thing that makes a product different from the competion. '],
-  ['This is the shortcut for undo.', 'This the button to insert a keyframe. ', 'This the button to make a symbol.', 'This is the shortcut to group things together.', 'This is the shortcut for the scale tool.', "This was used to make Alfonso's tail."],
-  ['This is what you need to keep in mind when typing.', 'This is what you end a line of code with.', 'This is the way to print in C#.', 'This is used to ignore a line of code.', 'This is how you check if your code works.', 'This the button that is pushed to auto complete part of a line of code.'],
-  ['This is the symbol for copyright.', 'This allows for complete use of the work without any extra steps needed.', 'This requires you to share a work with the same liscenses attached.', 'This makes you unable to edit the work under this .', 'This prevents you from using the work for profit.', 'This requires you to give credit.']];
+  ['This is the shortcut for the move tool.', 
+  'This needs to be done before starting the LEGO™ micro-game.', 
+  'This is the the default shortcut for the scale tool.', 
+  'This is where you interact with the game being built.', 
+  'This is the button that allows you to change your camera orientation.', 
+  'This is the the default shortcut for the select tool.'],
+  ['This person creates the controls for the player.', 
+  'This generation is when home video game systems became popular.', 
+  'This person creates character depth and interaction.', 
+  "This perspective has you looking through the character's eyes.", 
+  'This person creates the visual elements and assets of the game.', 
+  'This is the term for what that makes a product different from the competion.'],
+  ['This is the shortcut for undo.', 
+  'This the button to insert a keyframe. ', 
+  'This the button to make a symbol.', 
+  'This is the shortcut to group things together.', 
+  'This is the shortcut for the scale tool.', 
+  'This was a tool used to make Alfonso\'s tail.'],
+  ['This is what you end a line of code with.', 
+  'This is what you need to keep in mind when naming and calling variables.', 
+  'This is the way to print to the console in C#.', 
+  'This is used to comment a line of code in C#.', 
+  'This is the process of finding and fixing errors in your code.', 
+  'This the button that is pushed to auto complete part of a line of code.'],
+  ['This is the symbol for copyright.', 
+  'This allows for complete use of the work without any extra steps needed.', 
+  'This requires you to share a work with the same licenses attached.', 
+  'This prevents you from making changes to the work.', 
+  'This prevents you from using the work for profit.', 
+  'This requires you to give credit.']];
 var answers = [
-  ['What is W?', 'What is verify your age?', 'What is T?', 'What is the scene view?', 'What is alt?', 'What is V?'],
-  ['Who is the user interface designer?', 'What is Generation 2?', 'Who is the game writer?', 'What is first person perspective?', 'Who is the art designer?', 'What is the unique selling pont?'],
-  ['What is ctrl+z?', 'What is f6?', 'What is f8?', 'What is ctrl+g?', 'What is V?', 'What is a brush?'],
-  ['What is case sensitive?', 'What is ;?', 'What is Console.WriteLine()?', 'What is //?', 'What is debug?', 'What is enter?'],
-  ['What is ©?', 'What is public domain?', 'What is share alike?', 'What is no derivatives?', 'What is non-commercial?', 'What is attribution?']];
+  ['What is "W"?', 
+  'What is verifying your age?', 
+  'What is "T"?', 
+  'What is the scene view?', 
+  'What is "alt"?', 
+  'What is "V"?'],
+  ['Who is the user interface designer?', 
+  'What is Generation 2?', 
+  'Who is the game writer?', 
+  'What is first person perspective?', 
+  'Who is the art designer?', 
+  'What is the unique selling pont (USP)?'],
+  ['What is "Ctrl+Z"?', 
+  'What is "F6"?', 
+  'What is "F8"?', 
+  'What is "ctrl+g"?', 
+  'What is "V"?', 
+  'What is a brush?'],
+  ['What is capitalization?', 
+  'What is ";"?', 
+  'What is "Console.WriteLine()"?', 
+  'What is "//"?', 
+  'What is debugging?', 
+  'What is enter (or tab)?'],
+  ['What is "©"?', 
+  'What is public domain?', 
+  'What is share-alike?', 
+  'What is non-derivative?', 
+  'What is non-commercial?', 
+  'What is attribution?']];
 
 var url = document.location.href,
   params = url.split('?')[1].split('&'),
@@ -27,6 +77,9 @@ for (i = 1; i <= numTeams; i++) {
 teams = teams.filter(function () { return true });
 var currentTeam = 0;
 var previousTeam = 0;
+var lastCorrectTeam = 0;
+var previousCorrectTeam = 0;
+var questionAttempts = numTeams;
 var questionsLeft = categories.length * questions[0].length;
 var isAnsReveal = false;
 var isPlaying = true;
@@ -34,10 +87,12 @@ var isHint = true;
 var isBtns = true;
 var currentQuestion;
 
-var dd = getRandomInt(2, 30-numTeams);
+//var dd = getRandomInt(2, 30-numTeams);
+var dd = getRandomInt(25, 25);
 var maxBet = 0;
 var ddCategory;
 var ddQuestionID;
+var disableQuestionInput = false;
 
 var money = '';
 
@@ -103,7 +158,7 @@ function setupScoreBoard() {
 }
 
 function incrementTeam() {
-  previousTeam = currentTeam;
+  last = currentTeam;
   if (currentTeam < teams.length - 1) {
     currentTeam++;
   } else {
@@ -113,6 +168,11 @@ function incrementTeam() {
 
 function reduceQuestions() {
   questionsLeft--;
+}
+
+function buttonSound() {
+  var audio = new Audio('../Media/buttonpress.mp3');
+  audio.play();
 }
 
 function checkForWinner() {
@@ -126,7 +186,7 @@ function checkForWinner() {
 }
 
 function whosTurnIsIt() {
-  $('#teamTurn').text(teams[currentTeam][0] + ' is up');
+  $('#teamTurn').text(teams[lastCorrectTeam][0] + ' is up');
 }
 
 function updateScoreboard() {
@@ -136,8 +196,8 @@ function updateScoreboard() {
 }
 
 function updateActiveTeam() {
-  document.getElementById("t" + (currentTeam + 1)).classList.add('s-table-text-active');
-  document.getElementById("t" + (previousTeam + 1)).classList.remove('s-table-text-active');
+  document.getElementsByClassName("s-table-text-active")[0].classList.remove('s-table-text-active');
+  document.getElementById("t" + (lastCorrectTeam+1)).classList.add('s-table-text-active');
 }
 
 function controlAudio(b) {
@@ -148,6 +208,7 @@ function nextQuestion() {
   $('#questionModal').modal('hide');
   currentQuestion.addClass('isDisabled');
   currentQuestion.children().addClass('disabled');
+  document.getElementById("incorrect").removeAttribute("data-dismiss")
   isAnsReveal = false;
   updateScoreboard();
   incrementTeam();
@@ -184,9 +245,9 @@ function showButtons(){
     }
     if (isAnsReveal == false) {
       if (isHint) {
-        document.getElementById("reveal").innerHTML = "Reveal Question (space)";
+        document.getElementById("reveal").innerHTML = "Reveal Answer (space)";
       } else {
-        document.getElementById("reveal").innerHTML = "Reveal Question";
+        document.getElementById("reveal").innerHTML = "Reveal Answer";
       }
     }
     if (isHint) {
@@ -201,6 +262,7 @@ function showButtons(){
 }
 
 function dailyDouble(category, questionid){
+
   var modal = $("#questionModal")
   modal.find('.modal-title').text("Daily Double!");
   modal.find('.modal-body p').text("Place your bets!");
@@ -216,7 +278,7 @@ function dailyDouble(category, questionid){
   bet.classList.add("bet-input");
 
   var ptext = document.createElement("p");
-  maxBet = teams[currentTeam][1];
+  maxBet = teams[lastCorrectTeam][1];
   if (maxBet <= 5){
     maxBet = 500;
   }
@@ -233,12 +295,27 @@ function dailyDouble(category, questionid){
   document.getElementById("daily-double").appendChild(bet);
   document.getElementById("daily-double").appendChild(document.createElement("br"));
   document.getElementById("daily-double").appendChild(ddbtn);
+
   if (isBtns){
     hideButtons();
   }
+  
+  hideTeamSelector();
+  
+  var audio = new Audio('../Media/dd.mp3');
+  audio.play();
 
   ddCategory = category;
   ddQuestionID = questionid;
+
+  document.getElementById("bet-input").addEventListener('keydown', function (event) {
+    if (event.keyCode == 13) { // enter key
+      event.preventDefault();
+      document.getElementById("ddbtn").click();
+    }
+  });
+
+  disableQuestionInput = true;
 }
 
 function setInputFilter(textbox, inputFilter) {
@@ -266,13 +343,67 @@ function ddbtn(){
       showButtons();
     }
     money = input;
+
+    rebuildTeamSelector();
+    for (i=0; i<numTeams; i++){
+      if (i!=lastCorrectTeam){
+        var teamAttempted = document.getElementById("option"+i);
+        teamAttempted.parentNode.removeChild(teamAttempted);
+      }
+    }
+    
+
     var modal = document.getElementById('questionModal');
     document.getElementById('questionModalLabel').innerHTML = (categories[ddCategory] + ' for $' + money);
     document.getElementsByClassName('card-text')[0].innerHTML = (questions[ddCategory][ddQuestionID]);
+    document.getElementById("bet-input").removeEventListener('keydown', function (event) {
+      if (event.keyCode == 13) { // enter key
+        event.preventDefault();
+        document.getElementById("ddbtn").click();
+      }
+    });
+    disableQuestionInput = false;
     var ddOptions = document.getElementById("daily-double");
     ddOptions.parentNode.removeChild(ddOptions);
     document.getElementById("questionModal").focus();
   }
+}
+
+function setupTeamSelector(){
+  var teamSelector = document.getElementById("team-selector");
+  var options = '';
+  for (i = 0; i < numTeams; i++){
+    options += '<option value="'+i+'" id="option'+i+'">Team '+(i+1)+'</option>';
+  }
+  teamSelector.innerHTML = options;
+}
+
+function hideTeamSelector(){
+  document.getElementById("modal-team-selector").classList.add("hidden");
+  document.getElementById("modal-team-selector").style.height = "0%";
+  document.getElementById("modal-team-selector").innerHTML = "";
+}
+
+function rebuildTeamSelector(){
+  var lbl = document.createElement("label");
+  lbl.setAttribute("for", "teams");
+  lbl.innerHTML = "Buzzed In:";
+  
+  var slct = document.createElement("select");
+  slct.setAttribute("name", "teams");
+  slct.setAttribute("id", "team-selector");
+  var options = '';
+  for (i = 0; i < numTeams; i++){
+    options += '<option value="'+i+'" id="option'+i+'">Team '+(i+1)+'</option>';
+  }
+  slct.innerHTML = options;
+  
+  var teamSelector = document.getElementById("modal-team-selector");
+  teamSelector.appendChild(lbl);
+  teamSelector.appendChild(slct);
+  teamSelector.classList.remove("hidden");
+  teamSelector.removeAttribute("style");
+  teamSelector.style.paddingRight = "10px"
 }
 
 
@@ -282,6 +413,7 @@ $(document).ready(function () {
 
   setupBoard();
   setupScoreBoard();
+  setupTeamSelector();
   whosTurnIsIt();
 
 
@@ -289,6 +421,8 @@ $(document).ready(function () {
     currentQuestion = $(this);
     reduceQuestions();
     hintCheck();
+    questionAttempts = numTeams;
+    setupTeamSelector();
   });
 
   $('#questionModal').on('shown.bs.modal', function (event) {
@@ -306,17 +440,19 @@ $(document).ready(function () {
   });
 
   document.getElementById("questionModal").addEventListener('keydown', function (event) {
-    if (event.keyCode == 32) { // spacebar
-      event.preventDefault();
-      document.getElementById("reveal").click();
-    }
-    else if (event.keyCode == 90) { // z
-      event.preventDefault();
-      document.getElementById("incorrect").click();
-    }
-    else if (event.keyCode == 67) { // c
-      event.preventDefault();
-      document.getElementById("correct").click();
+    if (!disableQuestionInput){
+      if (event.keyCode == 32) { // spacebar
+        event.preventDefault();
+        document.getElementById("reveal").click();
+      }
+      else if (event.keyCode == 90) { // z
+        event.preventDefault();
+        document.getElementById("incorrect").click();
+      }
+      else if (event.keyCode == 67) { // c
+        event.preventDefault();
+        document.getElementById("correct").click();
+      }
     }
   });
 
@@ -342,18 +478,30 @@ $(document).ready(function () {
   });
 
   $('#correct').click(function () {
+    currentTeam = parseInt(document.getElementById("team-selector").value);
+    lastCorrectTeam = parseInt(document.getElementById("team-selector").value)
     teams[currentTeam][1] += parseInt(money);
     nextQuestion();
   });
 
   $('#incorrect').click(function () {
-    teams[currentTeam][1] -= parseInt(money);
-    nextQuestion();
+    console.log(document.getElementById("team-selector"));
+    currentTeam = parseInt(document.getElementById("team-selector").value);
+    teams[parseInt(document.getElementById("team-selector").value)][1] -= parseInt(money);
+    questionAttempts--;
+    updateScoreboard();
+    var teamAttempted = document.getElementById("option"+currentTeam);
+    teamAttempted.parentNode.removeChild(teamAttempted);
+    if (questionAttempts == 0 || questionsLeft == dd){
+      nextQuestion();
+    }
   });
 
   $('#close').click(function () {
-    
-  })
+    if (questionAttempts != numTeams || questionsLeft == dd){
+      nextQuestion();
+    }
+  });
 });
 
 $('#audioControl').click(function () {

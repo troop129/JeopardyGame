@@ -234,6 +234,18 @@ body{
   color:white;
   
 }
+select {
+  background: blue;
+  border: none;
+  border-bottom: 2.5px solid white;
+  color: rgb(255, 215, 56);
+  font-family: novecento-sans, sans-serif;
+}
+label{
+  color: white;
+  font-family: novecento-sans, sans-serif;
+  padding-right: 5px;
+}
 div{
   overflow: auto;
 }
