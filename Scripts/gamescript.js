@@ -70,6 +70,9 @@ for (var i = 0, l = params.length; i < l; i++) {
   data[tmp[0]] = tmp[1];
 }
 var numTeams = parseInt(data.teams);
+if (numTeams > 6){
+  numTeams = 6;
+}
 var teams = new Array();
 for (i = 1; i <= numTeams; i++) {
   teams[i] = ['Team ' + i, 0];
@@ -87,14 +90,22 @@ var isHint = true;
 var isBtns = true;
 var currentQuestion;
 
-//var dd = getRandomInt(2, 30-numTeams);
-var dd = getRandomInt(25, 25);
+var dd = getRandomInt(2, 30-numTeams);
 var maxBet = 0;
 var ddCategory;
 var ddQuestionID;
 var disableQuestionInput = false;
 
 var money = '';
+
+var keys = [49];
+for (i=0; i<numTeams-1;i++){
+  keys[i+1] = keys[i]+1;
+}
+var teamTracker = [];
+for (i=0; i<numTeams;i++){
+  teamTracker[i] = i;
+}
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -205,6 +216,7 @@ function controlAudio(b) {
 }
 
 function nextQuestion() {
+  reduceQuestions();
   $('#questionModal').modal('hide');
   currentQuestion.addClass('isDisabled');
   currentQuestion.children().addClass('disabled');
@@ -315,6 +327,8 @@ function dailyDouble(category, questionid){
     }
   });
 
+  teamTracker = [lastCorrectTeam];
+
   disableQuestionInput = true;
 }
 
@@ -406,6 +420,11 @@ function rebuildTeamSelector(){
   teamSelector.style.paddingRight = "10px"
 }
 
+function resetTeamTracker(){
+  for (i=0; i<numTeams;i++){
+    teamTracker[i] = i;
+  }
+}
 
 $(document).ready(function () {
   var category = '';
@@ -419,10 +438,10 @@ $(document).ready(function () {
 
   $('a').click(function () {
     currentQuestion = $(this);
-    reduceQuestions();
     hintCheck();
     questionAttempts = numTeams;
     setupTeamSelector();
+    resetTeamTracker();
   });
 
   $('#questionModal').on('shown.bs.modal', function (event) {
@@ -452,6 +471,12 @@ $(document).ready(function () {
       else if (event.keyCode == 67) { // c
         event.preventDefault();
         document.getElementById("correct").click();
+      }
+      else if (keys.includes(event.keyCode)) { // 2
+        if(teamTracker.indexOf(keys.indexOf(event.keyCode)) > -1){
+          event.preventDefault();
+          document.getElementById('team-selector').value=keys.indexOf(event.keyCode);
+        }
       }
     }
   });
@@ -485,13 +510,19 @@ $(document).ready(function () {
   });
 
   $('#incorrect').click(function () {
-    console.log(document.getElementById("team-selector"));
     currentTeam = parseInt(document.getElementById("team-selector").value);
     teams[parseInt(document.getElementById("team-selector").value)][1] -= parseInt(money);
     questionAttempts--;
     updateScoreboard();
     var teamAttempted = document.getElementById("option"+currentTeam);
     teamAttempted.parentNode.removeChild(teamAttempted);
+
+    for( var i = 0; i < teamTracker.length; i++){
+      if (teamTracker[i] == teamAttempted.value) { 
+        teamTracker.splice(i, 1); 
+      }
+    }
+
     if (questionAttempts == 0 || questionsLeft == dd){
       nextQuestion();
     }
