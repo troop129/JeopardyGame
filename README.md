@@ -35,8 +35,11 @@ This would return, for the 4 team scenario, an array such as this:
 The element with index `1` is the score of the team.
 
 There are a couple of functions that when the page is loaded, including board generation from a predetermined array of questions and answers. The board is a collection of divs with links, and when the link is pressed the code determines which tile it was and updates the text inside the Bootstrap Modal.
+
 ![clicking](https://i.imgur.com/FxBFUMU.gif)
+
 Inside the modal is the title, question, team selector, and the button panel.
+
 ![modal](https://i.imgur.com/VGlGWFd.png)
 
 The title updates with the category, and money based on location. The question takes the data from the array based on the position.
