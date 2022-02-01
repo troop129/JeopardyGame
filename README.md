@@ -2,13 +2,17 @@
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)[![Repl.it](https://img.shields.io/badge/Repl.it-%230D101E.svg?style=for-the-badge&logo=replit&logoColor=white)
 ](https://jeopardygame.troop129.repl.co/)
 
-A simple game based on the NBC TV Show "Jeopardy". Players answer prompts with a question and etiher win or lose money. The questions are arranged on board, sorted by categories, in acending value.This is a dynamic implementation of the game, where the number of players can be adjusted and it will still work. 
+A simple game based on the NBC TV Show "Jeopardy". Players answer prompts with a question and etiher win or lose money. The questions are arranged on board, sorted by categories, in acending value. 
 
-You can see this project in action on a hosted [repl](https://jeopardygame.troop129.repl.co/).
+This is a dynamic implementation of the game, where the number of players can be adjusted and it will still work. 
+
+You can see this project in action on a hosted [Repl](https://jeopardygame.troop129.repl.co/).
 
 ## How it Works
 In this implementation, the user starts on a landing page where they can select how many players are playing.
+
 ![landing page](https://i.imgur.com/9jynJV9.gif)
+
 The data of how many players are sent through the URL. For example, if they picked 4 players as shown above, the URl would say `https://jeopardygame.troop129.repl.co/Pages/game.html?teams=4`. This can then be decoded in the JS into the teams number, as shown in this snippet:
 ```javascript
 var url = document.location.href,
@@ -25,6 +29,7 @@ for (i = 1; i <= numTeams; i++) {
 }
 teams = teams.filter(function () { return true });
 ```
+
 This would return, for the 4 team scenario, an array such as this:
 ```
 ['Team 1',  0]
@@ -55,6 +60,7 @@ $('#questionModal').on('shown.bs.modal', function (event) {
     }
   });
 ```
+
 The buttons are Bootstrap, with a few minor changes in the CSS. When clicked, they run a function based on the context. For example, when you press the `Reveal` button, if the question is shown it will show the answer, and update the button text, and vice versa if it was the answer.
 ```js
 $('#reveal').click(function () {
@@ -78,6 +84,7 @@ $('#reveal').click(function () {
     }
   });
 ```
+
 There  are keyboard shortcuts for the Reveal, Correct, and Incorrect buttons (space, c, and z, respectively), which is hinted for the first 5 questions then no longer hinted.
 
 ## Credits
