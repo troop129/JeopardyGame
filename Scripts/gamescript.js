@@ -186,7 +186,7 @@ function buttonSound() {
   audio.play();
 }
 
-function checkForWinner() {
+function checkForWinner() { 
   if (questionsLeft == 0) {
     var url = "result.html?teams=" + encodeURIComponent(numTeams);
     for (i = 0; i < numTeams; i++) {
